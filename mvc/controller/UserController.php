@@ -18,7 +18,13 @@ class UserController
 		$userData = $um->getUser($id);
 		//error_log("Pokazi result ".print_r($result, 1));
 			
-		return array("id" => $id, "name" => $userData["name"],"surname"=>$userData["surname"] ,"email"=>$userData["email"],"country"=>$userData["country"],"country_code"=>$userData["country_code"]); // serializes object into JSON
+		return array(
+            "id" => $id,
+            "ime" => $userData["name"],
+            "email"=>$userData["email"],
+            "country"=> array("code" =>$userData["country_code"],"name" =>$userData["country"] )
+
+        ); // serializes object into JSON
     }
 
     /**
