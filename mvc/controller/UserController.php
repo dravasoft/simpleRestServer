@@ -17,6 +17,11 @@ class UserController
 		$um = new UserModel();
 		$userData = $um->getUser($id);
 		//error_log("Pokazi result ".print_r($result, 1));
+
+        if(empty($userData)) {
+
+            throw new RestException(401, "Ne obstaja!");
+        }
 			
 		return array(
             "id" => $id,
